@@ -5,7 +5,7 @@ os = require("os");
 
 localCacheStore = null;
 
-function RPIAudioPlayback(globalConfig. globalSocket) {
+function RPIAudioPlayback(globalConfig, globalSocket) {
 	console.log("RPiAudioPlaybackComponent is online!");
 	localCacheStore = {};
 	config = globalConfig;
