@@ -31,5 +31,8 @@ socket = io.listen(server);
 socket.sockets.on('connection', function(client) {
     console.log("A new client has connected");
 
-    client.emit("msg", "Hello there little buddy");
+    client.on("clientplayrequest", function(payload) {
+    	console.log("Forwarding client play request: " + JSON.stringify(payload));
+    	client.emit("playaudio", payload);
+    });
 });

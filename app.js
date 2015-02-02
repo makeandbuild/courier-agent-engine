@@ -1,9 +1,22 @@
 var config = require('./config')
 
-var socket = require('socket.io-client')('http://54.165.174.111:8081');
-socket.on('connect', function(){console.log("A connection was made")});
-socket.on('msg', function(payload){console.log("CONNECTION: " + payload)});
-socket.on('disconnect', function(){console.log("Disconnection occured")});
+//Makes the connection to the courier server
+var socket = require('socket.io-client')(config.courier.protocol + '://' + config.courier.url + ':' + config.courier.port);
+
+socket.on('connect', function() {
+	
+	//Load the RPI audio playback code.
+	var rpb = require('./modules/RPIAudioPlayback');
+	var audio = new rpb.RPIAudioPlayback(config, socket);
+
+	//Listen for the command from courier to play a audio file
+	socket.on('playaudio', function(payload) {
+		console.log("Courier has requested this RPI play: " + JSON.stringify(payload));
+		audio.playCachedFile(payload);
+	});
+
+	socket.on('disconnect', function(){console.log("Disconnection occured")});
+});
 
 // We need to gracefully exit
 process.on('SIGINT', function() {

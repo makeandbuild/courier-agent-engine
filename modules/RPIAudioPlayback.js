@@ -1,14 +1,15 @@
-var config, exec, os, localCacheStore;
+var config, exec, os, localCacheStore, socket;
 
 exec = require('child_process').exec;
 os = require("os");
 
 localCacheStore = null;
 
-function RPIAudioPlayback(globalConfig) {
+function RPIAudioPlayback(globalConfig. globalSocket) {
 	console.log("RPiAudioPlaybackComponent is online!");
 	localCacheStore = {};
 	config = globalConfig;
+	socket = globalSocket;
 }
 
 RPIAudioPlayback.prototype.playCachedFile = function(payload) {
