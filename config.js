@@ -17,6 +17,6 @@ config.audio.rpi.cachedir = "/Users/jeremydyer/Downloads/";
 config.audio.rpi.s3url = "https://s3.amazonaws.com/makeandbuild/courier/audio/";
 
 //TODO need to find the value nodejs provides for raspberry pi os.platform()
-config.audio.players = {"darwin": {"mp3": "afplay", "wav": "afplay"}, "linux": {"mp3": "mpg123", "wav": "aplay"};
+config.audio.players = {"darwin": {"mp3": "afplay", "wav": "afplay"}, "linux": {"mp3": "mpg123", "wav": "aplay"}};
 
 module.exports = config;
