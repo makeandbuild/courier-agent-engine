@@ -1,11 +1,9 @@
 var config = require('./config')
-var io = require('socket.io');
 
-var socket = io.connect("http://localhost:8081");
-
-socket.on('msg', function (payload) {
-  console.log("CONNECTION: " + payload);
-});
+var socket = require('socket.io-client')('http://54.165.174.111:8081');
+socket.on('connect', function(){console.log("A connection was made")});
+socket.on('msg', function(payload){console.log("CONNECTION: " + payload)});
+socket.on('disconnect', function(){console.log("Disconnection occured")});
 
 // We need to gracefully exit
 process.on('SIGINT', function() {
