@@ -1,0 +1,24 @@
+{
+  "name": "courier-agent-engine",
+  "version": "1.0.0",
+  "description": "HAL for executing courier application issued commands on the host device",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/makeandbuild/courier-agent-engine.git"
+  },
+  "author": "Jeremy Dyer",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/makeandbuild/courier-agent-engine/issues"
+  },
+  "homepage": "https://github.com/makeandbuild/courier-agent-engine",
+  "dependencies": {
+    "body-parser": "^1.11.0",
+    "moment": "^2.9.0",
+    "socket.io": "^1.3.2"
+  }
+}
