@@ -18,7 +18,7 @@ server = http.createServer(app);
 
 // This is the Express server and Port
 // Where the webapp will receive requests
-server.listen(config.express.port);
+server.listen(config.socketio.port);
 
 app.get('/', function(req, res) {
 	return res.sendFile(__dirname + '/Demo.html');
