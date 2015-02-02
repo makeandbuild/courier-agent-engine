@@ -4,7 +4,6 @@ var bodyParser = require('body-parser');
 var path = require("path");
 
 http = require('http');
-io = require('socket.io');
 express = require('express');
 
 app = express();
@@ -19,20 +18,18 @@ server = http.createServer(app);
 // This is the Express server and Port
 // Where the webapp will receive requests
 server.listen(config.socketio.port);
+io = require('socket.io')(server);
 
 app.get('/', function(req, res) {
 	return res.sendFile(__dirname + '/Demo.html');
 });
 
-// Set the socket to listen in on the Express port.
-socket = io.listen(server);
-
 // Connect to the socket connection to wait for requests from the client 
-socket.sockets.on('connection', function(client) {
+io.on('connection', function(client) {
     console.log("A new client has connected");
 
     client.on("clientplayrequest", function(payload) {
     	console.log("Forwarding client play request: " + JSON.stringify(payload));
-    	client.emit("playaudio", payload);
+    	io.emit("playaudio", payload);
     });
 });
