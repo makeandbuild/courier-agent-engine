@@ -9,7 +9,7 @@
 	<script type="text/javascript">
 
 		$( document ).ready(function() {
-			var socket = io(window.location.href);
+			var socket = io.connect("http://" + window.location.hostname + ":" + location.port);
 
 			$("#throatClear").click(function(e) {
 				console.log("1.wav was clicked!");
