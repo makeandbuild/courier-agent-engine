@@ -46,4 +46,4 @@ Creating Zip File:
 ------------------
 Using the .img file you created above create your INFO.txt file and edit your INFO.txt file to contain the proper information. Using your Mac create a .zip file containing the .img and INFO.txt file. Then upload that .zip file to https://s3.amazonaws.com/makeandbuild/rpi/imgs and make sure that the final .zip file you upload is public in S3! Your done! Let everyone know about it on Slack or something. We probably really need a channel just for these sort of discussions but we can just do it on the general channel until people start yelling enough.
 
-You can find the existing MNB_Base.zip here.
+You can find the existing MNB_Base.zip here https://s3.amazonaws.com/makeandbuild/rpi/imgs/MNB_Base.zip
