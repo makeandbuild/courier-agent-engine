@@ -1,3 +1,5 @@
+'use strict';
+
 var config, exec, os, localCacheStore, socket;
 
 exec = require('child_process').exec;
@@ -14,7 +16,7 @@ function RPIAudioPlayback(globalConfig, globalSocket) {
 
 RPIAudioPlayback.prototype.playCachedFile = function(payload) {
 
-	if (typeof payload.filename != undefined) {
+	if (payload.filename) {
 		var parts = payload.filename.split(".");
 		var fileExt = parts[parts.length - 1];
 		console.log("File Extension: " + fileExt);
@@ -22,16 +24,16 @@ RPIAudioPlayback.prototype.playCachedFile = function(payload) {
 
 		//Determines how the audio file should be played based on the host environment platform
 		var platform = os.platform();
-		if (config.audio.players[platform] != undefined) {
+		if (config.audio.players[platform]) {
 			var platPlayer = config.audio.players[platform][fileExt];
-			if (platPlayer != undefined) {
+			if (platPlayer) {
 				pbCmd = platPlayer + " " + config.audio.rpi.cachedir + payload.filename + " &";
 				console.log("Executing command: " + pbCmd);
 				//Executes the cmd if it is not null.
 				if (pbCmd != null) {
 					exec(pbCmd, function (error, stdout, stderr) {
 					  // output is in stdout
-					  console.log("STDOUT: " + stdout);
+					  console.log('stderr: ' + stderr + ' STDOUT: ' + stdout);
 					});
 				}
 			} else {
