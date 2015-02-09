@@ -14,7 +14,7 @@ socket.on('connect', function() {
 	var audio = new rpb.RPIAudioPlayback(config, socket);
 
 	//Listen for the command from courier to play a audio file
-updae	socket.on('playaudio', function(payload) {
+	socket.on('playaudio', function(payload) {
 		console.log("Courier has requested this RPI play: " + JSON.stringify(payload));
 		audio.playCachedFile(payload);
 	});
