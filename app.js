@@ -5,6 +5,8 @@ var getmac = require('getmac');
 var url = config.courier.protocol + '://' + config.courier.url + ':' + config.courier.port + '/engine';
 var socket = require('socket.io-client')(url);
 
+//[Lindsay Thurmond:2/9/15] TODO: cache audio files if we don't already have them
+
 socket.on('connect', function() {
 
     console.log('Connected!');

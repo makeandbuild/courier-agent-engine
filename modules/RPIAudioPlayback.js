@@ -28,12 +28,21 @@ RPIAudioPlayback.prototype.playCachedFile = function(payload) {
 			var platPlayer = config.audio.players[platform][fileExt];
 			if (platPlayer) {
 				pbCmd = platPlayer + " " + config.audio.rpi.cachedir + payload.filename + " &";
-				console.log("Executing command: " + pbCmd);
+				console.log('Executing command: %s, Time: %s', pbCmd, Date.now());
 				//Executes the cmd if it is not null.
 				if (pbCmd != null) {
 					exec(pbCmd, function (error, stdout, stderr) {
 					  // output is in stdout
-					  console.log('stderr: ' + stderr + ' STDOUT: ' + stdout);
+                        var log = '';
+                        if (stderr) {
+                            log += 'Error: ' + stderr;
+                        }
+                        if (stdout) {
+                            log += ' STDOUT: ' + stdout;
+                        }
+                        if (log !== '') {
+                            console.log(log);
+                        }
 					});
 				}
 			} else {
