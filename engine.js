@@ -1,5 +1,4 @@
 var config = require('./config');
-//var getmac = require('getmac');
 
 var network = require('network');
 
@@ -48,17 +47,6 @@ socket.on('connect', function() {
             ipAddress : obj.ip_address
         });
     });
-
-
-
-//    getmac.getMac(function(err, macAddress) {
-//        socket.emit('register',  {
-//            capabilities : config.capabilities,
-//            macAddress : macAddress,
-//            name : config.name,
-//            location : config.location
-//        });
-//    });
 
 });
 
