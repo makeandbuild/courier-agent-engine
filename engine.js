@@ -1,5 +1,7 @@
 var config = require('./config');
-var getmac = require('getmac');
+//var getmac = require('getmac');
+
+var network = require('network');
 
 //Makes the connection to the courier server
 var url = config.courier.protocol + '://' + config.courier.url + ':' + config.courier.port + '/engine';
@@ -24,14 +26,39 @@ socket.on('connect', function() {
 	socket.on('disconnect', function(){console.log("Disconnection occurred")});
 
     // tell the server about ourselves
-    getmac.getMac(function(err, macAddress) {
+
+    network.get_active_interface(function(err, obj) {
+
+        /* obj should be:
+
+         { name: 'eth0',
+         ip_address: '10.0.1.3',
+         mac_address: '56:e5:f9:e4:38:1d',
+         type: 'Wired',
+         netmask: '255.255.255.0',
+         gateway_ip: '10.0.1.1' }
+
+         */
+
         socket.emit('register',  {
             capabilities : config.capabilities,
-            macAddress : macAddress,
+            macAddress : obj.mac_address,
             name : config.name,
-            location : config.location
+            location : config.location,
+            ipAddress : obj.ip_address
         });
     });
+
+
+
+//    getmac.getMac(function(err, macAddress) {
+//        socket.emit('register',  {
+//            capabilities : config.capabilities,
+//            macAddress : macAddress,
+//            name : config.name,
+//            location : config.location
+//        });
+//    });
 
 });
 
