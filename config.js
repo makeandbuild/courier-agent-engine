@@ -4,8 +4,7 @@ module.exports = {
     courier : {
         protocol : 'http',
 //        url : 'localhost',
-        url : '54.165.174.111',
-//        url : 'courier.makeandbuildatl.com',
+        url : 'courier.makeandbuildatl.com',
 //        port : '8081'
         port : '9000'
     },
