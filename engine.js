@@ -25,7 +25,12 @@ socket.on('connect', function() {
 
     // tell the server about ourselves
     getmac.getMac(function(err, macAddress) {
-        socket.emit('register',  { capabilities : config.capabilities, macAddress : macAddress });
+        socket.emit('register',  {
+            capabilities : config.capabilities,
+            macAddress : macAddress,
+            name : config.name,
+            location : config.location
+        });
     });
 
 });
