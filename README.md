@@ -9,7 +9,9 @@ For a high level overview including architecture diagrams refer to our blog post
 
 ## Summary
 
-This code listens for a message from the server specifying an action to perform.  We are run this code on the same Raspberry Pi that the agent code is running on, but this could easily be separated to different devices.
+This code listens for a message from the server specifying an action to perform.  To be more specific, the action to perform is to play a specified audio file.  
+
+We run this code on the same Raspberry Pi that the agent code is running on, but this could easily be separated to different devices.  This code also runs on OSX.
 
 It uses socket.io to register with the server and then listens for playaudio events. 
 
@@ -30,6 +32,17 @@ npm install
 ```
 node engine.js
 ```
+
+## Demo
+A quick demo of this code running standalone can be done by running two separate node instances:
+```
+node demo.js
+```
+and then in a separate console window:
+```
+node engine.js
+```
+Then navigate your browser to http://localhost:9000 and click the 'Hello' button to play the hello.mp3 file.
 
 ## Roadmap
 This repo is a work in progress - IT IS NOT PRODUCTION READY. 
