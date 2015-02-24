@@ -10,7 +10,6 @@ app = express();
 
 // Configure NodeJS Express server
 app.use(bodyParser.json())
-app.use(express.static(path.join(__dirname, 'public')));
 
 server = http.createServer(app);
 
@@ -21,15 +20,20 @@ server.listen(config.socketio.port);
 io = require('socket.io')(server);
 
 app.get('/', function(req, res) {
-	return res.sendFile(__dirname + '/Demo.html');
+	var options = {
+		root: __dirname + '/public/',
+	};
+	return res.sendFile('Demo.html', options);
 });
 
-// Connect to the socket connection to wait for requests from the client 
+// Connect to the socket connection to wait for requests from the client
+var engine = io.of('/engine');
+
 io.on('connection', function(client) {
     console.log("A new client has connected");
 
     client.on("clientplayrequest", function(payload) {
     	console.log("Forwarding client play request: " + JSON.stringify(payload));
-    	io.emit("playaudio", payload);
+    	engine.emit("playaudio", payload);
     });
 });

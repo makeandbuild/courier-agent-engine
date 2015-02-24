@@ -11,25 +11,11 @@
 		$( document ).ready(function() {
 			var socket = io.connect("http://" + window.location.hostname + ":" + location.port);
 
-			$("#throatClear").click(function(e) {
-				console.log("1.wav was clicked!");
-				socket.emit('clientplayrequest', { 'filename': '1.wav' });
+			$("#hello").click(function(e) {
+				console.log("hello.mp3 was clicked!");
+				socket.emit('clientplayrequest', { 'filename': 'hello.mp3' });
 			});
 
-			$("#canOpen").click(function(e) {
-				console.log("2.wav was clicked!");
-				socket.emit('clientplayrequest', { 'filename': '2.wav' });
-			});
-
-			$("#scary").click(function(e) {
-				console.log("3.wav was clicked!");
-				socket.emit('clientplayrequest', { 'filename': '3.wav' });
-			});
-
-			$("#waterDrop").click(function(e) {
-				console.log("1.mp3 was clicked!");
-				socket.emit('clientplayrequest', { 'filename': '1.mp3' });
-			});
 	  	});
 
 	</script>
@@ -37,10 +23,7 @@
 
 <h1>Show some audio files that you can play here</h1>
 
-<button id="throatClear">Throat Clear</button>
-<button id="canOpen">Can Open</button>
-<button id="scary">Scary</button>
-<button id="waterDrop">Water Drop</button>
+<button id="hello">Hello</button>
 
 </body>
 </html>
