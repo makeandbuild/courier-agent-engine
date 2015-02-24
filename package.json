@@ -11,7 +11,17 @@
     "url": "https://github.com/makeandbuild/courier-agent-engine.git"
   },
   "author": "Jeremy Dyer",
-  "license": "ISC",
+  "contributors": [
+    {
+      "name": "Tom Elrod",
+      "email": "tom.elrod@gmail.com"
+    },
+    {
+      "name": "Lindsay Thurmond",
+      "email": "lindsay.thurmond@makeandbuild.com"
+    }
+  ],
+  "license": "Apache 2",
   "bugs": {
     "url": "https://github.com/makeandbuild/courier-agent-engine/issues"
   },
