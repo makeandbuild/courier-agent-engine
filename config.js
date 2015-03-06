@@ -12,7 +12,7 @@ module.exports = {
     capabilities : ['audio'],
     audio : {
         rpi : {
-            cachedir : 'public/',
+            cachedir : 'public/'
             //cachedir : '/home/pi/.audio/',
         },
         //TODO need to find the value nodejs provides for raspberry pi os.platform()
